@@ -45,3 +45,65 @@ console.log(dividir(10,2))
 let id=crypto.randomUUID()
 console.log("Imprimo un num random")
 console.log(id)
+
+//ejemplo callbacks sincronos 
+function procesarNumero(num, callback) {
+    // El callback se ejecuta inmediatamente
+    return callback(num);
+}
+
+function alCuadrado(x) {
+    return x * x;
+}
+
+console.log(procesarNumero(4, alCuadrado)); // Imprime: 16
+
+
+//ejemplo callbacks asincronos
+function saludarDespues(nombre, callback) {
+    setTimeout(() => {
+        callback(`Hola, ${nombre}`);
+    }, 2000); // Espera 2 segundos
+}
+
+function mostrarSaludo(mensaje) {
+    console.log(mensaje);
+}
+
+saludarDespues("Daiana", mostrarSaludo); // Imprime: Hola, Daiana (después de 2 segundos)
+
+//ejemplo closure
+function crearContador() {
+    let contador = 0;
+    return function() {
+        contador++;
+        return contador;
+    }
+}
+
+const miContador = crearContador();
+console.log(miContador()); // 1
+console.log(miContador()); // 2
+
+// ejemplo clouser 2
+function crearContador(contador) {
+    return function() {
+        contador++;
+        return contador;
+    }
+}
+
+const miContador2 = crearContador(5);
+console.log(miContador2()); // 6
+console.log(miContador2()); // 7
+
+//ejemplo con arrow funcion 
+const crearContador = (contador) => {
+    return () => {
+        contador++;
+        return contador;
+    };
+};
+
+//ejemplo arrow funcion mas compacto
+const crearContador = (contador) => () => ++contador;
