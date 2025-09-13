@@ -86,19 +86,19 @@ console.log(miContador()); // 1
 console.log(miContador()); // 2
 
 // ejemplo clouser 2
-function crearContador(contador) {
+function crearContador2(contador) {
     return function() {
         contador++;
         return contador;
     }
 }
 
-const miContador2 = crearContador(5);
+const miContador2 = crearContador2(5);
 console.log(miContador2()); // 6
 console.log(miContador2()); // 7
 
 //ejemplo con arrow funcion 
-const crearContador = (contador) => {
+const crearContador3 = (contador) => {
     return () => {
         contador++;
         return contador;
@@ -106,4 +106,38 @@ const crearContador = (contador) => {
 };
 
 //ejemplo arrow funcion mas compacto
-const crearContador = (contador) => () => ++contador;
+const crearContador4 = (contador) => () => ++contador;
+
+//EJEMPLO PROMESAS
+function cuadradoPromise(value){
+    if (typeof value !== "number") {
+            return Promise.reject(`Error, el valor "${value}" ingresado no es un número`);
+        }
+    return new Promise((resolve, reject) => {
+        setTimeout(()=>{
+            resolve({
+                value,
+                resultado: value * value
+            })
+        }, 3000)
+    });
+}
+cuadradoPromise(0)
+    .then(Object => {
+        console.log("Promesa: ");
+    })
+    .catch(error => {
+        console.error("Error:", error);
+    });
+
+    //EJEMPLO CON ASYNC AWAIT
+async function ejecutar() {
+    try {
+        const resultado = await cuadradoPromise(2);
+        console.log("Promesa con async/await:", resultado);
+    } catch (error) {
+        console.error("Error:", error);
+    }
+}
+
+ejecutar();
