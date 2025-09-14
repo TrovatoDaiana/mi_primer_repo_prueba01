@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/TrovatoDaiana/mi_primer_repo_prueba01/issues"
   },
-  "homepage": "https://github.com/TrovatoDaiana/mi_primer_repo_prueba01#readme"
+  "homepage": "https://github.com/TrovatoDaiana/mi_primer_repo_prueba01#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
 }
